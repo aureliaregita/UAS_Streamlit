@@ -53,6 +53,44 @@ for key,val in trans_negara.items():
 for i in df['tahun']:
     if i not in list_tahun:
         list_tahun.append(i)
+############### melengkapi dataframe #############################        
+#menghapus data yang bukan milik negara perseorangan
+negara=[]
+for i in trans_negara:
+    daftar_kode=list(trans_negara.keys())
+    
+for i in df['kode_negara']: 
+    if i in daftar_kode:
+        for key,val in trans_negara.items():
+            if i==key:
+                name=val
+    else:
+        name=np.nan
+    negara.append(name)
+
+df['negara']=negara
+df=df.dropna()
+
+#menambahkan region
+reg=[]
+for i in df['kode_negara']: 
+    for key,val in region_negara.items():
+        if i==key:
+            name=val
+    reg.append(name)
+df['region']=reg
+
+#menambahkan sub-region
+subreg=[]
+for i in df['kode_negara']: 
+    for key,val in subreg_negara.items():
+        if i==key:
+            name=val
+    subreg.append(name)
+df['sub-region']=subreg  
+################selesai###############
+
+################################# tampilan #############################################
 ############### title ###############
 st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("Statistik Produksi Minyak Mentah Dunia")
@@ -67,8 +105,6 @@ thn = st.sidebar.selectbox("Pilih Tahun", list_tahun)
 neg = st.sidebar.selectbox("Pilih Negara", list_negara)
 n = st.sidebar.number_input("Jumlah data yang ditampilkan", min_value=1, max_value=None, value=10)
 ############### sidebar ###############
-
-################## tampilan ###################
 
 ############### upper left column ###############
 left_col.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
@@ -99,7 +135,7 @@ thn_min=min['tahun'].to_string(index=False,header=False)
 min_prod=min['produksi'].to_string(index=False,header=False)
 
 #plot
-fig=plt.figure(figsize=(9,5))
+fig=plt.figure(figsize=(10,7))
 plt.plot(df1['tahun'], df1['produksi'])
 plt.xlabel("Tahun")
 plt.ylabel("Jumlah Produksi")
@@ -152,8 +188,7 @@ mid_col.pyplot(fig)
 right_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi")
 #soal 3 (5 besar negara dengan produksi kumulatif tertinggi)
 #membuat dataframe baru
-data3 = pd.read_csv(filepath)
-df3 = pd.DataFrame(data3, columns= ['kode_negara','produksi'])
+df3 = df
 
 #menghapus data yang bukan milik negara tunggal
 negara=[]
@@ -225,7 +260,7 @@ for i in df4['kode_negara']:
     reg.append(name)
 df4['region']=reg
 
-#menambahkan region
+#menambahkan sub-region
 subreg=[]
 for i in df4['kode_negara']: 
     for key,val in subreg_negara.items():
