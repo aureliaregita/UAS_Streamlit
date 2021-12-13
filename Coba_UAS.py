@@ -285,7 +285,7 @@ terbesar=terbesar.sort_values(['produksi'], ascending=False)
 #negara dengan produksi terbesar tahun x
 max_x=terbesar.loc[[thn]]
 
-col3.dataframe(terbesar.head(n))
+col3.dataframe(terbesar)
 ############### left column ###############
 
 
@@ -312,7 +312,7 @@ terkecil=terkecil.sort_values(['produksi'], ascending=True)
 #negara dengan produksi terkecil tahun x
 min_x=terkecil.loc[[thn]]
 
-col4.dataframe(terkecil.head(n))
+col4.dataframe(terkecil)
 ############### right column ###############
 
 
