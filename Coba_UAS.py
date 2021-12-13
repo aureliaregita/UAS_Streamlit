@@ -135,7 +135,7 @@ thn_min=min['tahun'].to_string(index=False,header=False)
 min_prod=min['produksi'].to_string(index=False,header=False)
 
 #plot
-fig=plt.figure(figsize=(9,7))
+fig=plt.figure()
 plt.plot(df1['tahun'], df1['produksi'])
 plt.xlabel("Tahun")
 plt.ylabel("Jumlah Produksi")
@@ -143,8 +143,8 @@ plt.ylabel("Jumlah Produksi")
 st.pyplot(fig)
 
 with st.expander("Lihat Deskripsi"):
-     st.write("Produksi tertinggi terjadi pada "+ thn_max + " dengan jumlah produksi "+ max_prod)
-     st.write("Produksi terendah terjadi pada " +thn_min+" dengan jumlah produksi "+ min_prod)
+     st.write(f"Produksi tertinggi terjadi pada **{thn_max}** dengan jumlah produksi **{max_prod}**")
+     st.write(f"Produksi terendah terjadi pada **{thn_min}** dengan jumlah produksi **{ min_prod}**")
  
 ############### Tampilan atas tengah ###############
 
