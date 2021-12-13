@@ -362,7 +362,7 @@ df4['sub-region']=subreg
 #daftar negara dengan dengan produksi nol sepanjang tahun
 nol=df4[df4.produksi==0]
 
-col5.dataframe(nol.head(n))
+col5.dataframe(nol)
 
 ###############  left column ###############
 
@@ -422,7 +422,7 @@ df5['total'] = df5.groupby(['negara'])['produksi'].transform('sum')
 new_df = df5.drop_duplicates(subset=['negara'])
 
 #display
-col7.dataframe(new_df.head(n))
+col7.dataframe(new_df)
 
 #memilih data produksi kumulatif terbesar 
 sort_produksi1=new_df.sort_values(['total'], ascending=False)
@@ -440,7 +440,7 @@ col8.subheader("Daftar Negara dengan Produksi Kumulatif Minyak Nol")
 
 #data dengan produksi kumulatif nol
 nol_kumulatif=new_df[new_df.total==0]
-col8.dataframe(nol_kumulatif.head(n))
+col8.dataframe(nol_kumulatif)
 #print(nol_kumulatif.to_string(index=False))
 ############### lower right column ###############
 
