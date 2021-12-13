@@ -158,7 +158,7 @@ df2 = pd.DataFrame(data2, columns= ['kode_negara','produksi'])
 
 #memilih tahun dan n data terbesar
 df2=df2.loc[[thn]]
-sort_produksi=df2.sort_values(['produksi','negara'], ascending=False)
+sort_produksi=df2.sort_values(['produksi'], ascending=False)
 great_n=sort_produksi.iloc[0:n] 
 
 #plot
