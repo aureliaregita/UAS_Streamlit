@@ -164,7 +164,7 @@ great_n=sort_produksi.iloc[0:n]
 #plot
 fig=plt.figure(figsize=(10,7))
 plt.pie(great_n['produksi'],labels=great_n['produksi'])
-plt.legend(great_n['negara'],title="Negara", fontsize=8.5, loc=2)
+plt.legend(great_n['produksi'],title="Negara", fontsize=8.5, loc=2)
 mid_col.pyplot(fig)
 ############### upper middle column ###############
 
