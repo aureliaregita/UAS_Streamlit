@@ -104,7 +104,7 @@ left_col, mid_col, right_col = st.columns(3)
 ## User inputs on the control panel
 thn = st.sidebar.selectbox("Pilih Tahun", list_tahun)
 neg = st.sidebar.selectbox("Pilih Negara", list_negara)
-n = st.sidebar.slider('Banyak data yang ditampilkan', min_value=0, max_value=100, step=1)
+n = st.sidebar.slider('Banyak data yang ditampilkan', value= 10, min_value=0, max_value=100, step=1)
 st.sidebar.write("Banyak data: ",n)
 ############### sidebar ###############
 
