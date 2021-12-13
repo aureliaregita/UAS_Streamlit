@@ -140,11 +140,12 @@ plt.plot(df1['tahun'], df1['produksi'])
 plt.xlabel("Tahun")
 plt.ylabel("Jumlah Produksi")
 
+st.pyplot(fig)
 
 with st.expander("Lihat Deskripsi"):
      st.write("Produksi tertinggi terjadi pada "+ thn_max + " dengan jumlah produksi "+ max_prod)
      st.write("Produksi terendah terjadi pada " +thn_min+" dengan jumlah produksi "+ min_prod)
-st.pyplot(fig) 
+ 
 ############### upper left column ###############
 
 
