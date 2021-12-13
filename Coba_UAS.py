@@ -414,13 +414,10 @@ df5['sub-region']=subreg
 #membuat kumulasi data
 df5['total'] = df5.groupby(['negara'])['produksi'].transform('sum')
 new_df = df5.drop_duplicates(subset=['negara'])
-new_df.set_index('kode_negara',inplace=True)
 
+#display
 mid_col.dataframe(new_df.head(n))
-############### lower middle column ###############
 
-############### lower right column ###############
-right_col.subheader("Daftar Negara dengan Produksi Kumulatif Minyak Nol")
 #memilih data produksi kumulatif terbesar 
 sort_produksi1=new_df.sort_values(['total'], ascending=False)
 max_kumulatif=sort_produksi1.iloc[0:1]
@@ -430,6 +427,10 @@ sort_produksi2=new_df.sort_values(['total'], ascending=True)
 delete=sort_produksi2[sort_produksi2['produksi']==0].index
 sort_produksi2.drop(delete, inplace=True)
 min_kumulatif=sort_produksi2.iloc[0:1]
+############### lower middle column ###############
+
+############### lower right column ###############
+right_col.subheader("Daftar Negara dengan Produksi Kumulatif Minyak Nol")
 
 #data dengan produksi kumulatif nol
 nol_kumulatif=new_df[new_df.total==0]
