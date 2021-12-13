@@ -94,6 +94,7 @@ df['sub-region']=subreg
 ############### title ###############
 st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("Statistik Produksi Minyak Mentah Dunia")
+st.markdown("Halo! Selamat datang di laman Tugas Besar UAS Pemrograman Komputer milik Aurelia Regita Cahyani (12220053) ")
 ############### title ###############)
 
 ############### sidebar ###############
@@ -104,6 +105,10 @@ left_col, mid_col, right_col = st.columns(3)
 thn = st.sidebar.selectbox("Pilih Tahun", list_tahun)
 neg = st.sidebar.selectbox("Pilih Negara", list_negara)
 n = st.sidebar.number_input("Jumlah data yang ditampilkan", min_value=1, max_value=None, value=10)
+n = st.sidebar.slider(
+     'Banyak data yang ditampilkan',
+     min_value=0, max_value=100))
+st.sidebar.write("Banyak data: ",n)
 ############### sidebar ###############
 
 ############### Tampilan atas tengah ###############
