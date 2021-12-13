@@ -318,7 +318,43 @@ mid_col.dataframe(terkecil.head(n))
 right_col.subheader("Daftar Negara dengan Produksi Minyak Nol Sepanjang Tahun")
 #soal 4.3 (nol tiap tahun)
 #membuat dataframe baru
-df4 = df.set_index('tahun',inplace=True)
+data4 = pd.read_csv(filepath, index_col="tahun")
+df4 = pd.DataFrame(data4, columns= ['kode_negara','produksi'])
+
+#menghapus data yang bukan milik negara perseorangan
+negara=[]
+for i in trans_negara:
+    daftar_kode=list(trans_negara.keys())
+    
+for i in df4['kode_negara']: 
+    if i in daftar_kode:
+        for key,val in trans_negara.items():
+            if i==key:
+                name=val
+    else:
+        name=np.nan
+    negara.append(name)
+
+df4['negara']=negara
+df4=df4.dropna()
+
+#menambahkan region
+reg=[]
+for i in df4['kode_negara']: 
+    for key,val in region_negara.items():
+        if i==key:
+            name=val
+    reg.append(name)
+df4['region']=reg
+
+#menambahkan sub-region
+subreg=[]
+for i in df4['kode_negara']: 
+    for key,val in subreg_negara.items():
+        if i==key:
+            name=val
+    subreg.append(name)
+df4['sub-region']=subreg
 
 #daftar negara dengan dengan produksi nol sepanjang tahun
 nol=df4[df4.produksi==0]
