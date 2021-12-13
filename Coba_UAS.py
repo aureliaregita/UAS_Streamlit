@@ -135,7 +135,7 @@ thn_min=min['tahun'].to_string(index=False,header=False)
 min_prod=min['produksi'].to_string(index=False,header=False)
 
 #plot
-fig=plt.figure(figsize=(10,7))
+fig=plt.figure(figsize=(9,7))
 plt.plot(df1['tahun'], df1['produksi'])
 plt.xlabel("Tahun")
 plt.ylabel("Jumlah Produksi")
