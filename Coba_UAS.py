@@ -107,7 +107,7 @@ n = st.sidebar.number_input("Jumlah data yang ditampilkan", min_value=1, max_val
 ############### sidebar ###############
 
 ############### upper left column ###############
-left_col.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
+st.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
 
 #soal 1 (grafik produksi tiap tahun negara x)
 #membuat dataframe baru
@@ -144,7 +144,7 @@ plt.ylabel("Jumlah Produksi")
 with st.expander("Lihat Deskripsi"):
      st.write("Produksi tertinggi terjadi pada "+ thn_max + " dengan jumlah produksi "+ max_prod)
      st.write("Produksi terendah terjadi pada " +thn_min+" dengan jumlah produksi "+ min_prod)
-left_col.pyplot(fig) 
+st.pyplot(fig) 
 ############### upper left column ###############
 
 
