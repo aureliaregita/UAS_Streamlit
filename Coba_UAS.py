@@ -53,42 +53,6 @@ for key,val in trans_negara.items():
 for i in df['tahun']:
     if i not in list_tahun:
         list_tahun.append(i)
-
-################### melengkapi data #######################        
-#menambahkan negara
-negara=[]
-for i in trans_negara:
-    daftar_kode=list(trans_negara.keys())
-    
-for i in df['kode_negara']: 
-    if i in daftar_kode:
-        for key,val in trans_negara.items():
-            if i==key:
-                name=val
-    else:
-        name=np.nan
-    negara.append(name)
-
-df['negara']=negara
-df=df.dropna()
-
-#menambahkan region
-reg=[]
-for i in df['kode_negara']: 
-    for key,val in region_negara.items():
-        if i==key:
-            name=val
-    reg.append(name)
-df['region']=reg
-
-#menambahkan region
-subreg=[]
-for i in df['kode_negara']: 
-    for key,val in subreg_negara.items():
-        if i==key:
-            name=val
-    subreg.append(name)
-df['sub-region']=subreg
 ############### title ###############
 st.set_page_config(layout="wide")  # this needs to be the first Streamlit command called
 st.title("Statistik Produksi Minyak Mentah Dunia")
@@ -210,7 +174,43 @@ right_col.pyplot(fig)
 left_col.subheader("Daftar Negara dengan Produksi Minyak Terbesar Sepanjang Tahun")
 #soal 4.1 (daftar negara dengan produksi terbesar tiap tahun)
 #membuat dataframe baru
-df4 = df.set_index('tahun',inplace=True)
+data4 = pd.read_csv(filepath, index_col="tahun")
+df4 = pd.DataFrame(data4, columns= ['kode_negara','produksi'])
+
+#menghapus data yang bukan milik negara perseorangan
+negara=[]
+for i in trans_negara:
+    daftar_kode=list(trans_negara.keys())
+    
+for i in df4['kode_negara']: 
+    if i in daftar_kode:
+        for key,val in trans_negara.items():
+            if i==key:
+                name=val
+    else:
+        name=np.nan
+    negara.append(name)
+
+df4['negara']=negara
+df4=df4.dropna()
+
+#menambahkan region
+reg=[]
+for i in df4['kode_negara']: 
+    for key,val in region_negara.items():
+        if i==key:
+            name=val
+    reg.append(name)
+df4['region']=reg
+
+#menambahkan region
+subreg=[]
+for i in df4['kode_negara']: 
+    for key,val in subreg_negara.items():
+        if i==key:
+            name=val
+    subreg.append(name)
+df4['sub-region']=subreg
 
 #daftar negara dengan produksi terbesar sepanjang tahun
 terbesar=pd.DataFrame()
