@@ -106,7 +106,7 @@ neg = st.sidebar.selectbox("Pilih Negara", list_negara)
 n = st.sidebar.number_input("Jumlah data yang ditampilkan", min_value=1, max_value=None, value=10)
 ############### sidebar ###############
 
-############### upper left column ###############
+############### Tampilan atas tengah ###############
 st.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
 
 #soal 1 (grafik produksi tiap tahun negara x)
@@ -146,10 +146,10 @@ with st.expander("Lihat Deskripsi"):
      st.write("Produksi tertinggi terjadi pada "+ thn_max + " dengan jumlah produksi "+ max_prod)
      st.write("Produksi terendah terjadi pada " +thn_min+" dengan jumlah produksi "+ min_prod)
  
-############### upper left column ###############
+############### Tampilan atas tengah ###############
 
 
-############### upper middle column ###############
+############### left column ###############
 col1,col2=st.columns(2)
 col1.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + str(thn))
 #soal 2 (n besar negara dengan produksi tertinggi tahun x)
@@ -183,10 +183,10 @@ fig=plt.figure(figsize=(10,7))
 plt.pie(great_n['produksi'],labels=great_n['produksi'])
 plt.legend(great_n['negara'],title="Negara", fontsize=8.5, loc=2)
 col1.pyplot(fig)
-############### upper middle column ###############
+############### left column ###############
 
 
-############### upper right column ###############
+###############  right column ###############
 col2.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi")
 #soal 3 (5 besar negara dengan produksi kumulatif tertinggi)
 #membuat dataframe baru
@@ -226,11 +226,12 @@ fig=plt.figure(figsize=(10,7))
 plt.pie(great['total'],labels=great['total'])
 plt.legend(great['negara'],title="Negara", fontsize=8.5, loc=2)
 col2.pyplot(fig)
-############### upper right column ###############
+############### right column ###############
 
 
-############### lower left column ###############
-left_col.subheader("Daftar Negara dengan Produksi Minyak Terbesar Sepanjang Tahun")
+############### left column ###############
+col3,col4=st.columns(2)
+col3.subheader("Daftar Negara dengan Produksi Minyak Terbesar Sepanjang Tahun")
 #soal 4.1 (daftar negara dengan produksi terbesar tiap tahun)
 #membuat dataframe baru
 data4 = pd.read_csv(filepath, index_col="tahun")
@@ -284,12 +285,12 @@ terbesar=terbesar.sort_values(['produksi'], ascending=False)
 #negara dengan produksi terbesar tahun x
 max_x=terbesar.loc[[thn]]
 
-left_col.dataframe(terbesar.head(n))
-############### lower left column ###############
+col3.dataframe(terbesar.head(n))
+############### left column ###############
 
 
-############### lower middle column ###############
-mid_col.subheader("Daftar Negara dengan Produksi Minyak Terkecil (tidak nol) Sepanjang Tahun")
+############### right column ###############
+col4.subheader("Daftar Negara dengan Produksi Minyak Terkecil (tidak nol) Sepanjang Tahun")
 #soal 4.2 (negara dengan produksi terkecil tiap tahun yang bukan nol)
 #membuat dataframe baru
 df4 = df
@@ -311,12 +312,13 @@ terkecil=terkecil.sort_values(['produksi'], ascending=True)
 #negara dengan produksi terkecil tahun x
 min_x=terkecil.loc[[thn]]
 
-mid_col.dataframe(terkecil.head(n))
-############### lower middle column ###############
+col4.dataframe(terkecil.head(n))
+############### right column ###############
 
 
-############### lower right column ###############
-right_col.subheader("Daftar Negara dengan Produksi Minyak Nol Sepanjang Tahun")
+############### left column ###############
+col5,col6=st.columns(2)
+col5.subheader("Daftar Negara dengan Produksi Minyak Nol Sepanjang Tahun")
 #soal 4.3 (nol tiap tahun)
 #membuat dataframe baru
 data4 = pd.read_csv(filepath, index_col="tahun")
@@ -360,18 +362,21 @@ df4['sub-region']=subreg
 #daftar negara dengan dengan produksi nol sepanjang tahun
 nol=df4[df4.produksi==0]
 
-right_col.dataframe(nol.head(n))
+col5.dataframe(nol.head(n))
 
-############### lower left column ###############
-left_col.subheader("Daftar Negara dengan Produksi Minyak Nol pada Tahun " + str(thn))
+###############  left column ###############
+
+###############  right column ###############
+col6.subheader("Daftar Negara dengan Produksi Minyak Nol pada Tahun " + str(thn))
 nol_x=nol.loc[[thn]]
-left_col.dataframe(nol_x.head(n))
+col6.dataframe(nol_x.head(n))
 
-############### lower left column ###############
+############### right left column ###############
 
 
-############### lower middle column ###############
-mid_col.subheader("Daftar Produksi Kumulatif Minyak")
+############### left column ###############
+col7,col8=st.columns(2)
+col7.subheader("Daftar Produksi Kumulatif Minyak")
 #soal 4.1.1 (kumulatif)
 #membuat dataframe baru
 data5 = pd.read_csv(filepath)
@@ -417,7 +422,7 @@ df5['total'] = df5.groupby(['negara'])['produksi'].transform('sum')
 new_df = df5.drop_duplicates(subset=['negara'])
 
 #display
-mid_col.dataframe(new_df.head(n))
+col7.dataframe(new_df.head(n))
 
 #memilih data produksi kumulatif terbesar 
 sort_produksi1=new_df.sort_values(['total'], ascending=False)
@@ -428,19 +433,19 @@ sort_produksi2=new_df.sort_values(['total'], ascending=True)
 delete=sort_produksi2[sort_produksi2['produksi']==0].index
 sort_produksi2.drop(delete, inplace=True)
 min_kumulatif=sort_produksi2.iloc[0:1]
-############### lower middle column ###############
+############### left column ###############
 
-############### lower right column ###############
-right_col.subheader("Daftar Negara dengan Produksi Kumulatif Minyak Nol")
+############### right column ###############
+col8.subheader("Daftar Negara dengan Produksi Kumulatif Minyak Nol")
 
 #data dengan produksi kumulatif nol
 nol_kumulatif=new_df[new_df.total==0]
-right_col.dataframe(nol_kumulatif.head(n))
+col8.dataframe(nol_kumulatif.head(n))
 #print(nol_kumulatif.to_string(index=False))
 ############### lower right column ###############
 
 ############### lower left column ###############
-right_col.subheader("Summary")
+st.subheader("Summary")
 
 #extract data dari excel dan buat summary
 neg_max=max_x['negara'].to_string(index=False,header=False)
