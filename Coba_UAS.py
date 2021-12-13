@@ -99,9 +99,9 @@ st.markdown("*Doakan semoga saya dapat **Indeks A** yaa!* :sunglasses: :pray:")
 ############### title ###############)
 
 ############### sidebar ###############
-st.sidebar.title("Pengaturan")
+st.sidebar.title("Opsi Pilihan")
 left_col, mid_col, right_col = st.columns(3)
-st.sidebar.subheader("Opsi Pilihan")
+
 ## User inputs on the control panel
 thn = st.sidebar.selectbox("Pilih Tahun", list_tahun)
 neg = st.sidebar.selectbox("Pilih Negara", list_negara)
