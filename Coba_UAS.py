@@ -154,7 +154,8 @@ with st.expander("Lihat Deskripsi"):
 mid_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi")
 #soal 2 (n besar negara dengan produksi tertinggi tahun x)
 #membuat dataframe baru
-df2 = df.set_index('tahun',inplace=True)
+data2 = pd.read_csv(filepath, index_col="tahun")
+df2 = pd.DataFrame(data2, columns= ['kode_negara','produksi'])
 
 #memilih tahun dan n data terbesar
 df2=df2.loc[[thn]]
