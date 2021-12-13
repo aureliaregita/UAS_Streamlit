@@ -149,7 +149,7 @@ left_col.pyplot(fig)
 
 
 ############### upper middle column ###############
-mid_col.subheader(int(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + str(thn))
+mid_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + str(thn))
 #soal 2 (n besar negara dengan produksi tertinggi tahun x)
 #membuat dataframe baru
 data2 = pd.read_csv(filepath, index_col="tahun")
