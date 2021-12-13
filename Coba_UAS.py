@@ -142,7 +142,8 @@ plt.ylabel("Jumlah Produksi")
 
 
 with st.expander("Lihat Deskripsi"):
-     st.write("Produksi tertinggi terjadi pada "+ thn_max + " dengan jumlah produksi "+ max_prod + ".\n Produksi terendah terjadi pada " +thn_min+" dengan jumlah produksi "+ min_prod)
+     st.write("Produksi tertinggi terjadi pada "+ thn_max + " dengan jumlah produksi "+ max_prod)
+     st.write("Produksi terendah terjadi pada " +thn_min+" dengan jumlah produksi "+ min_prod)
 left_col.pyplot(fig) 
 ############### upper left column ###############
 
