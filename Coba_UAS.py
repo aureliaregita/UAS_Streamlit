@@ -307,7 +307,6 @@ for i in list_tahun:
 terkecil=terkecil.sort_values(['produksi'], ascending=True)
 
 #negara dengan produksi terkecil tahun x
-thn=2002
 min_x=terkecil.loc[[thn]]
 
 mid_col.dataframe(terkecil.head(n))
