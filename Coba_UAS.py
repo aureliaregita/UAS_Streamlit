@@ -99,7 +99,6 @@ st.sidebar.title("Opsi Pilihan")
 left_col, mid_col, right_col = st.columns(3)
 
 ## User inputs on the control panel
-st.sidebar.subheader("Pengaturan konfigurasi tampilan")
 thn = st.sidebar.selectbox("Pilih Tahun", list_tahun)
 neg = st.sidebar.selectbox("Pilih Negara", list_negara)
 n = st.sidebar.number_input("Jumlah data yang ditampilkan", min_value=1, max_value=None, value=10)
