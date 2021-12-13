@@ -156,6 +156,22 @@ mid_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Terting
 data2 = pd.read_csv(filepath, index_col="tahun")
 df2 = pd.DataFrame(data2, columns= ['kode_negara','produksi'])
 
+#menghapus data yang bukan milik negara tunggal
+negara=[]
+for i in trans_negara:
+    daftar_kode=list(trans_negara.keys())
+for i in df2['kode_negara']: 
+    if i in daftar_kode:
+        for key,val in trans_negara.items():
+            if i==key:
+                name=val
+    else:
+        name=np.nan
+    negara.append(name)
+
+df2['negara']=negara
+df2=df2.dropna()
+
 #memilih tahun dan n data terbesar
 df2=df2.loc[[thn]]
 sort_produksi=df2.sort_values(['produksi'], ascending=False)
@@ -164,7 +180,7 @@ great_n=sort_produksi.iloc[0:n]
 #plot
 fig=plt.figure(figsize=(10,7))
 plt.pie(great_n['produksi'],labels=great_n['produksi'])
-plt.legend(great_n['produksi'],title="Negara", fontsize=8.5, loc=2)
+plt.legend(great_n['negara'],title="Negara", fontsize=8.5, loc=2)
 mid_col.pyplot(fig)
 ############### upper middle column ###############
 
