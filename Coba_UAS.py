@@ -109,9 +109,11 @@ n = st.sidebar.number_input("Jumlah data yang ditampilkan", min_value=1, max_val
 
 ############### upper left column ###############
 left_col.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
+
 #soal 1 (grafik produksi tiap tahun negara x)
 #membuat dataframe baru
-df1 = df.set_index('kode_negara',inplace=True)
+data1 = pd.read_csv(filepath, index_col="kode_negara")
+df1 = pd.DataFrame(data1, columns= ['tahun','produksi'])
 
 #memilih negara di data
 for key,val in trans_negara.items():
