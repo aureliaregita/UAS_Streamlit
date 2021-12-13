@@ -150,7 +150,8 @@ with st.expander("Lihat Deskripsi"):
 
 
 ############### upper middle column ###############
-mid_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + str(thn))
+col1,col2=st.columns(2)
+col1.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + str(thn))
 #soal 2 (n besar negara dengan produksi tertinggi tahun x)
 #membuat dataframe baru
 data2 = pd.read_csv(filepath, index_col="tahun")
@@ -181,12 +182,12 @@ great_n=sort_produksi.iloc[0:n]
 fig=plt.figure(figsize=(10,7))
 plt.pie(great_n['produksi'],labels=great_n['produksi'])
 plt.legend(great_n['negara'],title="Negara", fontsize=8.5, loc=2)
-mid_col.pyplot(fig)
+col1.pyplot(fig)
 ############### upper middle column ###############
 
 
 ############### upper right column ###############
-right_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi")
+col2.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi")
 #soal 3 (5 besar negara dengan produksi kumulatif tertinggi)
 #membuat dataframe baru
 df3 = df
@@ -224,7 +225,7 @@ great=sort_produksi.iloc[0:n]
 fig=plt.figure(figsize=(10,7))
 plt.pie(great['total'],labels=great['total'])
 plt.legend(great['negara'],title="Negara", fontsize=8.5, loc=2)
-right_col.pyplot(fig)
+col2.pyplot(fig)
 ############### upper right column ###############
 
 
