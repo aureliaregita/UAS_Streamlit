@@ -152,7 +152,29 @@ mid_col.pyplot(fig)
 right_col.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi")
 #soal 3 (5 besar negara dengan produksi kumulatif tertinggi)
 #membuat dataframe baru
-df3 = df
+data3 = pd.read_csv(filepath)
+df3 = pd.DataFrame(data3, columns= ['kode_negara','produksi'])
+
+#menghapus data yang bukan milik negara tunggal
+negara=[]
+for i in trans_negara:
+    daftar_kode=list(trans_negara.keys())
+    
+for i in df3['kode_negara']: 
+    if i in daftar_kode:
+        for key,val in trans_negara.items():
+            if i==key:
+                name=val
+    else:
+        name=np.nan
+    negara.append(name)
+
+df3['negara']=negara
+df3=df3.dropna()
+
+#menghitung kumulasi
+df3['total'] = df3.groupby(['negara'])['produksi'].transform('sum')
+new_df = df3.drop_duplicates(subset=['negara'])
 
 #menghitung kumulasi
 df3['total'] = df3.groupby(['negara'])['produksi'].transform('sum')
