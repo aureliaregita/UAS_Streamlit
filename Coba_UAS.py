@@ -295,7 +295,7 @@ col3.dataframe(terbesar)
 
 
 ############### right column ###############
-col4.subheader("Daftar Negara dengan Produksi Minyak Terkecil (tidak nol) Tiap Tahun")
+col4.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Kecil (tidak nol) Tiap Tahun")
 #soal 4.2 (negara dengan produksi terkecil tiap tahun yang bukan nol)
 #membuat dataframe baru
 df4 = df
