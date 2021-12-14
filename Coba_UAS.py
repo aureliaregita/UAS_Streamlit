@@ -236,7 +236,7 @@ col2.pyplot(fig)
 
 ############### left column ###############
 col3,col4=st.columns(2)
-col3.subheader("Daftar Negara dengan Produksi Minyak Terbesar Sepanjang Tahun")
+col3.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Tinggi Tiap Tahun")
 #soal 4.1 (daftar negara dengan produksi terbesar tiap tahun)
 #membuat dataframe baru
 data4 = pd.read_csv(filepath, index_col="tahun")
@@ -295,7 +295,7 @@ col3.dataframe(terbesar)
 
 
 ############### right column ###############
-col4.subheader("Daftar Negara dengan Produksi Minyak Terkecil (tidak nol) Sepanjang Tahun")
+col4.subheader("Daftar Negara dengan Produksi Minyak Terkecil (tidak nol) Tiap Tahun")
 #soal 4.2 (negara dengan produksi terkecil tiap tahun yang bukan nol)
 #membuat dataframe baru
 df4 = df
@@ -323,7 +323,7 @@ col4.dataframe(terkecil)
 
 ############### left column ###############
 col5,col6=st.columns(2)
-col5.subheader("Daftar Negara dengan Produksi Minyak Nol Sepanjang Tahun")
+col5.subheader("Daftar Negara dengan Produksi Minyak Nol Tiap Tahun")
 #soal 4.3 (nol tiap tahun)
 #membuat dataframe baru
 data4 = pd.read_csv(filepath, index_col="tahun")
