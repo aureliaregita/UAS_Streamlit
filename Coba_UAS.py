@@ -374,7 +374,7 @@ col5.dataframe(nol)
 ###############  right column ###############
 col6.subheader("Daftar Negara dengan Produksi Minyak Nol pada Tahun " + str(thn))
 nol_x=nol.loc[[thn]]
-col6.dataframe(nol_x.head(n))
+col6.dataframe(nol_x)
 
 ############### right left column ###############
 
