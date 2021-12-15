@@ -391,7 +391,7 @@ subreg_max_n=max_n['sub-region'].to_string(index=False,header=False)
 reg_max_n=max_n['region'].to_string(index=False,header=False)
 kode_max_n=max_n['kode_negara'].to_string(index=False,header=False)
 prod_max_n=max_n['produksi'].to_string(index=False,header=False)
-thn_max=max_n.index.values
+thn_max=str(max_n.index.values)
 st.markdown(f"**Negara dengan produksi minyak tahunan terbesar adalah **  {neg_max_n} ({kode_max_n}), Region {reg_max_n}, Sub-region {subreg_max_n}, dengan jumlah produksi {prod_max_n} pada tahun {thn_max}\n")
 
 neg_max=max_x['negara'].to_string(index=False,header=False)
