@@ -259,6 +259,8 @@ terbesar=pd.DataFrame()
 terkecil=pd.DataFrame()
 for i in list_tahun:
     df_new=df4.loc[[i]]
+    delete=new_df[new_df['produksi']==0].index
+    new_df.drop(delete, inplace=True)
     sort_produksi=df_new.sort_values(['produksi'], ascending=False)
     great=sort_produksi.iloc[0:1]
     terbesar=terbesar.append(great,ignore_index=False)
