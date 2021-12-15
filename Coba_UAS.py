@@ -210,10 +210,11 @@ col2.pyplot(fig)
 ############### right column ###############
 
 
-############### left column ###############
+############### left and right column ###############
 col3,col4=st.columns(2)
 col3.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Tinggi Tiap Tahun")
-#soal 4.1 (daftar negara dengan produksi terbesar tiap tahun)
+col4.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Kecil (tidak nol) Tiap Tahun")
+#soal 4.1 (daftar negara dengan produksi terbesar dan terkecil tiap tahun)
 #membuat dataframe baru
 data4 = pd.read_csv(filepath, index_col="tahun")
 df4 = pd.DataFrame(data4, columns= ['kode_negara','produksi'])
@@ -253,46 +254,33 @@ for i in df4['kode_negara']:
     subreg.append(name)
 df4['sub-region']=subreg
 
-#daftar negara dengan produksi terbesar sepanjang tahun
+#daftar negara dengan produksi terbesar dan terkecil sepanjang tahun
 terbesar=pd.DataFrame()
+terkecil=pd.DataFrame()
 for i in list_tahun:
     df_new=df4.loc[[i]]
     sort_produksi=df_new.sort_values(['produksi'], ascending=False)
     great=sort_produksi.iloc[0:1]
     terbesar=terbesar.append(great,ignore_index=False)
+    
+    sort_produksi1=df_new.sort_values(['produksi'], ascending=True)
+    small=sort_produksi1.iloc[:1]
+    terkecil=terkecil.append(small,ignore_index=False)
+    
 
+terkecil=terkecil.sort_values(['produksi'], ascending=True)
 terbesar=terbesar.sort_values(['produksi'], ascending=False)
 
 #negara dengan produksi terbesar tahun x
 max_x=terbesar.loc[[thn]]
 
 col3.dataframe(terbesar)
-############### left column ###############
-
-
-############### right column ###############
-col4.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Kecil (tidak nol) Tiap Tahun")
-#soal 4.2 (negara dengan produksi terkecil tiap tahun yang bukan nol)
-#membuat dataframe baru
-delete=df4[df4['produksi']==0].index
-df4.drop(delete, inplace=True)
-
-terkecil=pd.DataFrame()
-
-#daftar negara dengan produksi terkecil sepanjang tahun
-for i in list_tahun:
-    df_new=df4.loc[[i]]
-    sort_produksi=df_new.sort_values(['produksi'], ascending=True)
-    small=sort_produksi.iloc[:1]
-    terkecil=terkecil.append(small,ignore_index=False)
-
-terkecil=terkecil.sort_values(['produksi'], ascending=True)
 
 #negara dengan produksi terkecil tahun x
 min_x=terkecil.loc[[thn]]
 
 col4.dataframe(terkecil)
-############### right column ###############
+############### left and right column ###############
 
 
 ############### left column ###############
