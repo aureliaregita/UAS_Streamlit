@@ -273,13 +273,13 @@ terkecil=terkecil.sort_values(['produksi'], ascending=True)
 terbesar=terbesar.sort_values(['produksi'], ascending=False)
 
 #negara dengan produksi terbesar tahun x
-max_x=terbesar.loc[[thn]]
+#max_x=terbesar.loc[[thn]]
 
 #display daftar negara dengan produksi terbesar
 col3.dataframe(terbesar)
 
 #negara dengan produksi terkecil tahun x
-min_x=terkecil.loc[[thn]]
+#min_x=terkecil.loc[[thn]]
 
 #display daftar negara dengan produksi terkecil
 col4.dataframe(terkecil)
@@ -375,7 +375,7 @@ col8.dataframe(nol_kumulatif)
 ############### lower left column ###############
 st.subheader("Summary")
 
-#extract data dari excel dan buat summary
+'''#extract data dari excel dan buat summary
 neg_max=max_x['negara'].to_string(index=False,header=False)
 subreg_max=max_x['sub-region'].to_string(index=False,header=False)
 reg_max=max_x['region'].to_string(index=False,header=False)
