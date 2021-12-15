@@ -215,8 +215,8 @@ col3,col4=st.columns(2)
 col3.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Tinggi Tiap Tahun")
 #soal 4.1 (daftar negara dengan produksi terbesar tiap tahun)
 #membuat dataframe baru
-data4 = pd.read_csv(filepath, index_col="tahun")
-df4 = pd.DataFrame(data4, columns= ['kode_negara','produksi'])
+df4 = df
+df4.set_index('tahun',inplace=True)
 
 #menghapus data yang bukan milik negara perseorangan
 negara=[]
