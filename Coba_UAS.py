@@ -215,45 +215,7 @@ col3,col4=st.columns(2)
 col3.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Tinggi Tiap Tahun")
 col4.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Kecil (tidak nol) Tiap Tahun")
 #soal 4.1 (daftar negara dengan produksi terbesar dan terkecil tiap tahun)
-#membuat dataframe baru
-data4 = pd.read_csv(filepath)
-df4 = pd.DataFrame(data4, columns= ['tahun','kode_negara','produksi'])
-
-#menghapus data yang bukan milik negara perseorangan
-negara=[]
-for i in trans_negara:
-    daftar_kode=list(trans_negara.keys())
-    
-for i in df4['kode_negara']: 
-    if i in daftar_kode:
-        for key,val in trans_negara.items():
-            if i==key:
-                name=val
-    else:
-        name=np.nan
-    negara.append(name)
-
-df4['negara']=negara
-df4=df4.dropna()
-
-#menambahkan region
-reg=[]
-for i in df4['kode_negara']: 
-    for key,val in region_negara.items():
-        if i==key:
-            name=val
-    reg.append(name)
-df4['region']=reg
-
-#menambahkan sub-region
-subreg=[]
-for i in df4['kode_negara']: 
-    for key,val in subreg_negara.items():
-        if i==key:
-            name=val
-    subreg.append(name)
-df4['sub-region']=subreg
-
+df4=df
 #menghapus nilai nol
 new_df=df4.copy()
 delete=new_df[new_df['produksi']==0].index
@@ -276,13 +238,13 @@ terkecil=terkecil.sort_values(['produksi'], ascending=True)
 terbesar=terbesar.sort_values(['produksi'], ascending=False)
 
 #negara dengan produksi terbesar tahun x
-#max_x=terbesar.loc[[thn]]
+max_x=terbesar.loc[[thn]]
 
 #display daftar negara dengan produksi terbesar
 col3.dataframe(terbesar)
 
 #negara dengan produksi terkecil tahun x
-#min_x=terkecil.loc[[thn]]
+min_x=terkecil.loc[[thn]]
 
 #display daftar negara dengan produksi terkecil
 col4.dataframe(terkecil)
