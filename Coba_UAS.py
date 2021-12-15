@@ -403,3 +403,4 @@ reg_min_kum=min_kumulatif['region'].to_string(index=False,header=False)
 kode_min_kum=min_kumulatif['kode_negara'].to_string(index=False,header=False)
 prod_min_kum=min_kumulatif['total'].to_string(index=False,header=False)
 st.markdown(f"**Negara dengan produksi kumulatif minyak terkecil adalah **  {neg_min_kum} ({kode_min_kum}), Region {reg_min_kum}, Sub-region {subreg_min_kum}, dengan jumlah produksi {prod_min_kum} \n")
+'''
