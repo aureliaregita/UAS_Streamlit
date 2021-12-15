@@ -114,7 +114,7 @@ st.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
 
 #soal 1 (grafik produksi tiap tahun negara x)
 #membuat dataframe baru
-df1 = df
+df1 = df.copy
 df1.set_index('negara',inplace=True)
 df1=df1.loc[[neg]]
 
@@ -300,6 +300,7 @@ col5.dataframe(nol)
 
 ###############  right column ###############
 col6.subheader("Daftar Negara dengan Produksi Minyak Nol pada Tahun " + str(thn))
+nol.set_index('tahun',inplace=True)
 nol_x=nol.loc[[thn]]
 col6.dataframe(nol_x)
 ############### right left column ###############
