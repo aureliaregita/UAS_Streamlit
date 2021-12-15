@@ -157,6 +157,21 @@ col1.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + 
 df2 = df
 df2.set_index('tahun',inplace=True)
 
+#menghapus data yang bukan milik negara tunggal
+negara=[]
+for i in trans_negara:
+    daftar_kode=list(trans_negara.keys())
+for i in df2['kode_negara']: 
+    if i in daftar_kode:
+        for key,val in trans_negara.items():
+            if i==key:
+                name=val
+    else:
+        name=np.nan
+    negara.append(name)
+
+df2['negara']=negara
+df2=df2.dropna()
 #memilih tahun dan n data terbesar
 df2=df2.loc[[thn]]
 sort_produksi=df2.sort_values(['produksi'], ascending=False)
@@ -175,7 +190,6 @@ col2.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Kumulatif Tertinggi"
 #soal 3 (5 besar negara dengan produksi kumulatif tertinggi)
 #membuat dataframe baru
 df3 = df
-
 #menghapus data yang bukan milik negara tunggal
 negara=[]
 for i in trans_negara:
