@@ -287,19 +287,16 @@ col4.dataframe(terkecil)
 ############### left column ###############
 col5,col6=st.columns(2)
 col5.subheader("Daftar Negara dengan Produksi Minyak Nol Tiap Tahun")
-#soal 4.3 (nol tiap tahun)
-#daftar negara dengan dengan produksi nol sepanjang tahun
+#soal 4.3 (daftar negara dengan dengan produksi nol sepanjang tahun)
 nol=df4[df4.produksi==0]
 
 col5.dataframe(nol)
-
 ###############  left column ###############
 
 ###############  right column ###############
 col6.subheader("Daftar Negara dengan Produksi Minyak Nol pada Tahun " + str(thn))
 nol_x=nol.loc[[thn]]
 col6.dataframe(nol_x)
-
 ############### right left column ###############
 
 
