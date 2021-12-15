@@ -275,6 +275,12 @@ for i in list_tahun:
 terkecil=terkecil.sort_values(['produksi'], ascending=True)
 terbesar=terbesar.sort_values(['produksi'], ascending=False)
 
+#produksi tahunan paling besar
+max_n=terbesar.iloc[0:1]
+
+#produksi tahunan paling kecil
+min_n=terkecil.iloc[0:1]
+
 #negara dengan produksi terbesar tahun x
 max_x=terbesar.loc[[thn]]
 
@@ -380,6 +386,14 @@ col8.dataframe(nol_kumulatif)
 st.subheader("Summary")
 
 #extract data dari excel dan buat summary
+neg_max_n=max_n['negara'].to_string(index=False,header=False)
+subreg_max_n=max_n['sub-region'].to_string(index=False,header=False)
+reg_max_n=max_n['region'].to_string(index=False,header=False)
+kode_max_n=max_n['kode_negara'].to_string(index=False,header=False)
+prod_max_n=max_n['produksi'].to_string(index=False,header=False)
+thn_max=max_n.index
+st.markdown(f"**Negara dengan produksi minyak tahunan terbesar adalah **  {neg_max_n} ({kode_max_n}), Region {reg_max_n}, Sub-region {subreg_max_n}, dengan jumlah produksi {prod_max_n} pada tahun {thn_max}\n")
+
 neg_max=max_x['negara'].to_string(index=False,header=False)
 subreg_max=max_x['sub-region'].to_string(index=False,header=False)
 reg_max=max_x['region'].to_string(index=False,header=False)
