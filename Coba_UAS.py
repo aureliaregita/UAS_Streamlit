@@ -154,24 +154,8 @@ col1,col2=st.columns(2)
 col1.subheader(str(n)+" Besar Negara dengan Jumlah Produksi Tertinggi Tahun " + str(thn))
 #soal 2 (n besar negara dengan produksi tertinggi tahun x)
 #membuat dataframe baru
-data2 = pd.read_csv(filepath, index_col="tahun")
-df2 = pd.DataFrame(data2, columns= ['kode_negara','produksi'])
-
-#menghapus data yang bukan milik negara tunggal
-negara=[]
-for i in trans_negara:
-    daftar_kode=list(trans_negara.keys())
-for i in df2['kode_negara']: 
-    if i in daftar_kode:
-        for key,val in trans_negara.items():
-            if i==key:
-                name=val
-    else:
-        name=np.nan
-    negara.append(name)
-
-df2['negara']=negara
-df2=df2.dropna()
+df2 = df
+df2.set_index('tahun',inplace=True)
 
 #memilih tahun dan n data terbesar
 df2=df2.loc[[thn]]
