@@ -114,14 +114,9 @@ st.subheader("Grafik Produksi Minyak Mentah "+ neg +" Sepanjang Tahun")
 
 #soal 1 (grafik produksi tiap tahun negara x)
 #membuat dataframe baru
-data1 = pd.read_csv(filepath, index_col="kode_negara")
-df1 = pd.DataFrame(data1, columns= ['tahun','produksi'])
-
-#memilih negara di data
-for key,val in trans_negara.items():
-    if neg==val:
-        kode=key
-df1=df1.loc[[kode]]
+df1 = df
+df1.set_index('negara',inplace=True)
+df1=df1.loc[[neg]]
 
 #membuat deskripsi
 #memilih produksi terbesar
