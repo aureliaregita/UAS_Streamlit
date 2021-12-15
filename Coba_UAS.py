@@ -216,8 +216,8 @@ col3.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Tinggi Tiap 
 col4.subheader("Daftar Negara dengan Tingkat Produksi Minyak Paling Kecil (tidak nol) Tiap Tahun")
 #soal 4.1 (daftar negara dengan produksi terbesar dan terkecil tiap tahun)
 #membuat dataframe baru
-data4 = pd.read_csv(filepath, index_col="tahun")
-df4 = pd.DataFrame(data4, columns= ['kode_negara','produksi'])
+data4 = pd.read_csv(filepath)
+df4 = pd.DataFrame(data4, columns= ['tahun','kode_negara','produksi'])
 
 #menghapus data yang bukan milik negara perseorangan
 negara=[]
@@ -254,13 +254,16 @@ for i in df4['kode_negara']:
     subreg.append(name)
 df4['sub-region']=subreg
 
+#menghapus nilai nol
+new_df=df4.copy()
+delete=new_df[new_df['produksi']==0].index
+new_df.drop(delete, inplace=True)
+new_df.set_index('tahun',inplace=True)
 #daftar negara dengan produksi terbesar dan terkecil sepanjang tahun
 terbesar=pd.DataFrame()
 terkecil=pd.DataFrame()
 for i in list_tahun:
-    df_new=df4.loc[[i]]
-    delete=df_new[df_new['produksi']==0].index
-    df_new.drop(delete, inplace=True)
+    df_new=new_df.loc[[i]]
     sort_produksi=df_new.sort_values(['produksi'], ascending=False)
     great=sort_produksi.iloc[0:1]
     terbesar=terbesar.append(great,ignore_index=False)
@@ -375,7 +378,7 @@ col8.dataframe(nol_kumulatif)
 ############### lower left column ###############
 st.subheader("Summary")
 
-'''#extract data dari excel dan buat summary
+#extract data dari excel dan buat summary
 neg_max=max_x['negara'].to_string(index=False,header=False)
 subreg_max=max_x['sub-region'].to_string(index=False,header=False)
 reg_max=max_x['region'].to_string(index=False,header=False)
@@ -403,4 +406,4 @@ reg_min_kum=min_kumulatif['region'].to_string(index=False,header=False)
 kode_min_kum=min_kumulatif['kode_negara'].to_string(index=False,header=False)
 prod_min_kum=min_kumulatif['total'].to_string(index=False,header=False)
 st.markdown(f"**Negara dengan produksi kumulatif minyak terkecil adalah **  {neg_min_kum} ({kode_min_kum}), Region {reg_min_kum}, Sub-region {subreg_min_kum}, dengan jumlah produksi {prod_min_kum} \n")
-'''
+
