@@ -393,7 +393,16 @@ kode_max_n=max_n['kode_negara'].to_string(index=False,header=False)
 prod_max_n=max_n['produksi'].to_string(index=False,header=False)
 for i in max_n.index:
     thn_max=i
-st.markdown(f"**Negara dengan produksi minyak tahunan terbesar adalah **  {neg_max_n} ({kode_max_n}), Region {reg_max_n}, Sub-region {subreg_max_n}, dengan jumlah produksi {prod_max_n} pada tahun **{thn_max}**\n")
+st.markdown(f"**Negara dengan produksi minyak tahunan terbesar adalah **  {neg_max_n} ({kode_max_n}), Region {reg_max_n}, Sub-region {subreg_max_n}, dengan jumlah produksi {prod_max_n} pada **tahun {thn_max}**\n")
+
+neg_min_n=min_n['negara'].to_string(index=False,header=False)
+subreg_min_n=min_n['sub-region'].to_string(index=False,header=False)
+reg_min_n=min_n['region'].to_string(index=False,header=False)
+kode_min_n=min_n['kode_negara'].to_string(index=False,header=False)
+prod_min_n=min_n['produksi'].to_string(index=False,header=False)
+for i in min_n.index:
+    thn_min=i
+st.markdown(f"**Negara dengan produksi minyak tahunan terkecil (tak nol) adalah **  {neg_min_n} ({kode_min_n}), Region {reg_min_n}, Sub-region {subreg_min_n}, dengan jumlah produksi {prod_min_n} pada **tahun {thn_min}**\n")
 
 neg_max=max_x['negara'].to_string(index=False,header=False)
 subreg_max=max_x['sub-region'].to_string(index=False,header=False)
