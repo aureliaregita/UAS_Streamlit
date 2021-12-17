@@ -139,7 +139,7 @@ plt.xlabel("Tahun")
 plt.ylabel("Jumlah Produksi")
 
 
-col9,col10=st.columns([3,2])
+col9,col10=st.columns([4,1])
 col9.pyplot(fig)
 
 with st.expander("Deskripsi"):
